@@ -5,6 +5,7 @@ import Navbar from "./componets/Navbar/Navbar";
 import ClinetOnly from "./componets/ClinetOnly";
 import Modal from "./componets/Modals/Modal";
 import RegisterModal from "./componets/Modals/RegisterModal";
+import ToasterProvider from "./Providers/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClinetOnly>
+          <ToasterProvider/>
           <RegisterModal />
           <Navbar />
         </ClinetOnly>

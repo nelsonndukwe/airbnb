@@ -31,7 +31,8 @@ const Input: React.FC<Inputprops> = ({
           size={24}
           className="text-neutral-700
             border-neutral-500
-            absolute top-5
+            absolute 
+            top-5
             left-2"
         />
       )}
@@ -42,9 +43,10 @@ const Input: React.FC<Inputprops> = ({
         {...register(id, { required })}
         placeholder=" "
         type={type}
-        className={`peer w-full p-4 pt-6 font-light bg-black border-full rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed 
+        className={`peer w-full p-4 pt-6 font-light             border-[1px]
+        border-black border-full rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed 
         ${formatPrice ? `pl-9` : `pl-4`} ${
-          errors[id] ? `bg-rose-500` : `bg-neutral-300`
+          errors[id] ? `border-rose-500` : `border-neutral-300`
         } ${formatPrice ? `focus:border-rose-500` : `focus:border-black`}`}
       />
 
