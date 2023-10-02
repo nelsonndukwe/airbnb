@@ -46,7 +46,7 @@ const LoginModal = () => {
         }
 
         if(callback?.error){
-            toast.error("Error")
+            toast.error(callback.error)
         }
     })
   };
