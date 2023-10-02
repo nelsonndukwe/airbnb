@@ -48,11 +48,11 @@ model Account {
 model Listing {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
   title         String
-  Description   String
+  description   String
   imageSrc      String
   createdAt     DateTime @default(now())
   category      String
-  roomCoun      Int
+  roomCount      Int
   bathroomCount Int
   guestCount    Int
   locationValue String
@@ -68,7 +68,7 @@ model Reservation {
   userId     String   @db.ObjectId
   listingId  String   @db.ObjectId
   startDate  DateTime
-  enddate    DateTime
+  endDate    DateTime
   totalPrice Int
   createdAt  DateTime @default(now())
 

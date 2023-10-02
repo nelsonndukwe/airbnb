@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { Inter, Nunito, Poppins } from "next/font/google";
 import Navbar from "./componets/Navbar/Navbar";
 import ClinetOnly from "./componets/ClinetOnly";
-import Modal from "./componets/Modals/Modal";
 import RegisterModal from "./componets/Modals/RegisterModal";
 import ToasterProvider from "./Providers/ToasterProvider";
+import LoginModal from "./componets/Modals/LoginModal";
+import { getCurrentUser } from "./Actions/getCurrentUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,18 +17,21 @@ export const metadata: Metadata = {
 
 const font = Nunito({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const currentUser = await getCurrentUser()
   return (
     <html lang="en">
       <body className={font.className}>
         <ClinetOnly>
           <ToasterProvider/>
+          <LoginModal />
           <RegisterModal />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClinetOnly>
 
         {children}
