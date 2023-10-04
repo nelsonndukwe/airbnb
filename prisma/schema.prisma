@@ -31,7 +31,7 @@ model Account {
   userId            String  @db.ObjectId
   type              String
   provider          String
-  ProviderAccountId String
+  providerAccountId String
   refresh_token     String? @db.String
   access_token      String? @db.String
   expires_at        Int?
@@ -42,7 +42,7 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([provider, ProviderAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Listing {
@@ -52,7 +52,7 @@ model Listing {
   imageSrc      String
   createdAt     DateTime @default(now())
   category      String
-  roomCount      Int
+  roomCount     Int
   bathroomCount Int
   guestCount    Int
   locationValue String

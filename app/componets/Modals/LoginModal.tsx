@@ -1,5 +1,5 @@
 "use client";
-import {signIn} from 'next-auth/react'
+import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -11,12 +11,12 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
-import { redirect, useRouter } from 'next/navigation';
+import { redirect, useRouter } from "next/navigation";
 
 const LoginModal = () => {
-    const router = useRouter()
+  const router = useRouter();
   const loginModal = useLoginModal();
-  const registermodal = useRegisterModal()
+  const registermodal = useRegisterModal();
   const [loading, setLoading] = useState(false);
 
   const {
@@ -33,22 +33,21 @@ const LoginModal = () => {
   const onsubmit: SubmitHandler<FieldValues> = (data) => {
     setLoading(true);
 
-    signIn("credentials", {...data, redirect: false }).then((callback) => {
-        setLoading(false)
+    signIn("credentials", { ...data, redirect: false }).then((callback) => {
+      setLoading(false);
 
-        if(callback?.ok){
-            toast.success("Logged In")
+      if (callback?.ok) {
+        toast.success("Logged In");
 
-            router.refresh()
+        router.refresh();
 
-            loginModal.onClose()
+        loginModal.onClose();
+      }
 
-        }
-
-        if(callback?.error){
-            toast.error(callback.error)
-        }
-    })
+      if (callback?.error) {
+        toast.error(callback.error);
+      }
+    });
   };
 
   const bodyContent = (
@@ -63,8 +62,6 @@ const LoginModal = () => {
         required
         register={register}
       />
-
-    
 
       <Input
         id="password"
@@ -86,7 +83,7 @@ const LoginModal = () => {
         outline
         label="Continue With Google"
         icon={FcGoogle}
-        onClick={() =>signIn("google") }
+        onClick={() => signIn("google")}
       />
 
       <Button
@@ -96,16 +93,17 @@ const LoginModal = () => {
         onClick={() => signIn("github")}
       />
 
-
       <div className=" text-neutral-500 text-center mt-4 font-light">
-      
-      <div className="flex flex-row items-center gap-2 justify-center ">
-        <div className="">Already Have An Account</div>
+        <div className="flex flex-row items-center gap-2 justify-center ">
+          <div className="">Already Have An Account</div>
 
-        <div className="text-neutral-800 cursor-pointer hover:underline"
-        onClick={loginModal.onClose}
-        >Login</div>
-      </div>
+          <div
+            className="text-neutral-800 cursor-pointer hover:underline"
+            onClick={loginModal.onClose}
+          >
+            Login
+          </div>
+        </div>
       </div>
     </div>
   );
