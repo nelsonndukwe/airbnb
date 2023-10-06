@@ -7,3 +7,20 @@ body,
 :root {
   height: 100%;
 }
+
+.scroll{
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.leaflet-bottom,
+.laflet-control,
+.leaflet-pane,
+.leaflet-top{
+  z-index: 0 !important
+}

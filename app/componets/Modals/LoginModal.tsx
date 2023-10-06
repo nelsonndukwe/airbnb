@@ -15,6 +15,7 @@ import { redirect, useRouter } from "next/navigation";
 
 const LoginModal = () => {
   const router = useRouter();
+
   const loginModal = useLoginModal();
   const registermodal = useRegisterModal();
   const [loading, setLoading] = useState(false);
@@ -49,6 +50,15 @@ const LoginModal = () => {
       }
     });
   };
+
+  const toggle = useCallback(
+    () => {
+      loginModal.onClose()
+      registermodal.onOpen()
+    },
+    [loginModal, registermodal],
+  )
+  
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -95,13 +105,13 @@ const LoginModal = () => {
 
       <div className=" text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row items-center gap-2 justify-center ">
-          <div className="">Already Have An Account</div>
+          <div className="">First timer using airbnb?</div>
 
           <div
             className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={loginModal.onClose}
+            onClick={toggle}
           >
-            Login
+            Create an Account
           </div>
         </div>
       </div>

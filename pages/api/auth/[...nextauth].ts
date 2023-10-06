@@ -41,6 +41,10 @@ export const authOptions: AuthOptions = {
 
         if (!user || !user?.hashedPassword) throw new Error("Invalid Password");
 
+        if(credentials.password.length < 8){
+          throw new Error("Password must contain atleast 8 characters")
+        }
+
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
           user.hashedPassword

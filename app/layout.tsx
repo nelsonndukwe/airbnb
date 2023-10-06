@@ -6,7 +6,9 @@ import ClinetOnly from "./componets/ClinetOnly";
 import RegisterModal from "./componets/Modals/RegisterModal";
 import ToasterProvider from "./Providers/ToasterProvider";
 import LoginModal from "./componets/Modals/LoginModal";
+
 import { getCurrentUser } from "./Actions/getCurrentUser";
+import RentModal from "./componets/Modals/RentModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +33,7 @@ export default async function RootLayout({
           <ToasterProvider/>
           <LoginModal />
           <RegisterModal />
+          <RentModal />
           <Navbar currentUser={currentUser} />
         </ClinetOnly>
 
