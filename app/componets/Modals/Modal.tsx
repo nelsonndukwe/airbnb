@@ -9,6 +9,7 @@ interface modalprops {
   onSubmit: () => void;
   body?: React.ReactElement;
   title?: string;
+  steps?: number;
   footer?: React.ReactElement;
   actionLabel: string;
   disabled?: boolean;
@@ -21,6 +22,7 @@ const Modal: React.FC<modalprops> = ({
   onClose,
   onSubmit,
   title,
+  steps,
   body,
   footer,
   actionLabel,
@@ -81,15 +83,17 @@ const Modal: React.FC<modalprops> = ({
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
               {/* HEADER */}
               
-              <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
+              <div className="flex items-center p-6 rounded-t justify-between relative border-b-[1px]">
                 <button
-                  className="p-1 border-0 hover:text-rose-500 transition absolute left-9 "
+                  className="p-1 border-0 hover:text-rose-500 transition  "
                   onClick={handleClose}
                 >
                   <IoMdClose size={18} />
                 </button>
 
                 <div className="text-lg font-semibold">{title}</div>
+
+                <div className="text-rose-500 font-semibold">{steps === 0? "Start" : steps}/5</div>
               </div>
 
               <div className="relative p-6 flex-auto">{body}</div>
