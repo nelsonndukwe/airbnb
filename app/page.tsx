@@ -6,7 +6,6 @@ import ListingCard from "./componets/Listings/ListingCard";
 import { getCurrentUser } from "./Actions/getCurrentUser";
 
 export default async function Home() {
-  const isEmpty = true;
   const listings = await getListings();
   const currentUser = await getCurrentUser()
 
@@ -28,7 +27,7 @@ export default async function Home() {
   gap-8
   "
         >
-          {listings.map((listing: any) => {
+          {listings.map((listing) => {
             return <ListingCard
             key={listing.id}
             data={listing}

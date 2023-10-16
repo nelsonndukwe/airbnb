@@ -72,7 +72,6 @@ const Modal: React.FC<modalprops> = ({
     <>
       <div className=" overflow-y-auto fixed inset-0 outline-none focus:outline-none bg-neutral-800/70 z-50">
         <div className="relative w-[90%] md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-auto h-auto lg:h-auto md:h-auto">
-          
           {/* CONTENT */}
 
           <div
@@ -82,8 +81,10 @@ const Modal: React.FC<modalprops> = ({
           >
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ">
               {/* HEADER */}
-              
-              <div className="flex items-center p-6 rounded-t justify-between relative border-b-[1px]">
+
+              <div
+                className={`flex items-center p-6 rounded-t justify-between relative border-b-[1px]`}
+              >
                 <button
                   className="p-1 border-0 hover:text-rose-500 transition  "
                   onClick={handleClose}
@@ -93,7 +94,13 @@ const Modal: React.FC<modalprops> = ({
 
                 <div className="text-lg font-semibold">{title}</div>
 
-                <div className="text-rose-500 font-semibold">{steps === 0? "Start" : steps}/5</div>
+                <div
+                  className={`${
+                    steps ? `text-rose-500 font-semibold ` : `opacity-0 `
+                  }`}
+                >
+                  {steps === 0 ? "Start" : steps}/5
+                </div>
               </div>
 
               <div className="relative p-6 flex-auto">{body}</div>
