@@ -48,7 +48,7 @@ const RentModal = () => {
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: "",
+      imageSrc: '',
       price: 1,
       title: "",
       description: "",
@@ -88,6 +88,8 @@ const RentModal = () => {
       return onNext();
     }
 
+    console.log(data);
+    
     setIsLoading(true);
     axios
       .post("/api/listings", data)
@@ -100,6 +102,8 @@ const RentModal = () => {
       })
       .catch((error) => {
         toast.error("Something went wrong");
+        console.log(error);
+        
       })
       .finally(() => {
         setIsLoading(false);

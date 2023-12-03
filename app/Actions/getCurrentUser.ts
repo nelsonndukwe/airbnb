@@ -6,7 +6,7 @@ import prisma from "@/app/Libs/PrismaDb";
 
 export async function getSession() {
   return await getServerSession(authOptions);
-}
+}  
 
 export async function getCurrentUser() {
   try {
@@ -20,6 +20,8 @@ export async function getCurrentUser() {
             email: session.user.email as string
         }
     })
+
+
 
     if(!currentUser){
         return  null
